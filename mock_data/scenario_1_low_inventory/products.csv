@@ -1,0 +1,12 @@
+product_id,product_name,category,unit_cost,unit_price,weight_kg,dimensions_cm,criticality,daily_demand_avg
+P001,Industrial Bearings,Manufacturing,42.00,85.00,2.5,15x15x8,HIGH,12
+P002,Hydraulic Pumps,Manufacturing,280.00,520.00,8.5,30x25x20,CRITICAL,5
+P003,Steel Sheets,Raw Materials,75.00,140.00,25.0,120x80x2,MEDIUM,18
+P004,Circuit Boards,Electronics,110.00,210.00,0.8,20x15x1,HIGH,8
+P005,Copper Wire,Raw Materials,11.00,22.00,5.0,Spool-50m,LOW,15
+P006,Precision Screws,Hardware,0.75,1.85,0.02,5x1x1,MEDIUM,45
+P007,Rubber Gaskets,Components,7.50,16.00,0.15,10x10x0.5,HIGH,10
+P008,Aluminum Frames,Manufacturing,85.00,165.00,12.0,200x50x50,LOW,8
+P009,Electrical Connectors,Electronics,16.00,35.00,0.25,8x5x3,HIGH,14
+P010,Plastic Casings,Components,18.00,38.00,1.8,30x20x15,LOW,12
+

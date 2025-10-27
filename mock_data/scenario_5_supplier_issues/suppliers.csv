@@ -1,0 +1,12 @@
+supplier_id,supplier_name,product_id,status,issue_type,lead_time_days,normal_lead_time,reliability_score,location,last_delivery_date,next_expected_delivery
+S001,TechParts Inc,P001,DELAYED,PRODUCTION_DELAY,14,7,0.95,Chicago IL,2025-10-20,2025-11-03
+S002,Industrial Supply Co,P001,OPERATIONAL,NONE,10,10,0.88,Detroit MI,2025-10-25,2025-11-04
+S003,HydroTech Systems,P002,CRITICAL,QUALITY_ISSUE,20,5,0.92,Houston TX,2025-10-15,2025-11-04
+S004,MetalWorks Ltd,P003,OPERATIONAL,NONE,14,14,0.90,Pittsburgh PA,2025-10-26,2025-11-09
+S005,ElectroComponents,P004,DELAYED,SHIPPING_DELAY,12,8,0.93,San Jose CA,2025-10-22,2025-11-03
+S006,WireTech Solutions,P005,OPERATIONAL,NONE,6,6,0.91,Phoenix AZ,2025-10-26,2025-11-01
+S007,FastenRight Corp,P006,OPERATIONAL,NONE,4,4,0.96,Atlanta GA,2025-10-26,2025-10-30
+S008,RubberTech Industries,P007,CRITICAL,SUPPLIER_BANKRUPTCY,60,12,0.87,Cleveland OH,2025-10-10,UNKNOWN
+S009,ConnectPro,P009,DELAYED,MATERIAL_SHORTAGE,15,7,0.94,Austin TX,2025-10-20,2025-11-04
+S010,AlumCore Manufacturing,P008,OPERATIONAL,NONE,15,15,0.89,Seattle WA,2025-10-24,2025-11-08
+

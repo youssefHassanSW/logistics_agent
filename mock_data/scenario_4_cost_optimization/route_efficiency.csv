@@ -1,0 +1,10 @@
+route_id,origin,destination,distance_km,fuel_consumption_liters,cost_per_trip,utilization_percent,optimization_suggestion,potential_savings
+R101,Warehouse_A,Zone_North,145,35.8,156.90,65,Consolidate with R106,28.50
+R102,Warehouse_B,Zone_East,98,24.2,106.03,88,None,0.00
+R103,Warehouse_A,Zone_South,210,52.5,230.13,72,Use alternative route via I-90,35.80
+R104,Warehouse_C,Zone_West,175,43.8,192.03,58,Consolidate deliveries,45.20
+R105,Warehouse_B,Zone_Central,85,21.3,93.35,92,None,0.00
+R106,Warehouse_A,Zone_North,145,35.8,156.90,45,Consolidate with R101,28.50
+R107,Warehouse_C,Zone_East,156,38.9,170.57,52,Switch to Zone_B warehouse,38.90
+R108,Warehouse_A,Zone_West,198,49.5,217.13,68,Use direct highway route,42.30
+

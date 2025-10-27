@@ -1,0 +1,7 @@
+warehouse_id,location,total_capacity_sqm,used_capacity_sqm,utilization_percent,monthly_cost,cost_per_sqm,optimization_recommendation,potential_savings
+Warehouse_A,Chicago IL,5000,3250,65.0,28000,5.60,Consolidate slow-moving items,4200.00
+Warehouse_B,Phoenix AZ,4500,3825,85.0,22000,4.89,Optimize layout for faster access,1800.00
+Warehouse_C,Seattle WA,3500,1925,55.0,18500,5.29,Consider downsizing or sublease,5550.00
+Warehouse_D,Atlanta GA,4000,2800,70.0,24000,6.00,Negotiate lease renewal,3600.00
+Warehouse_E,Denver CO,3000,2550,85.0,16500,5.50,Operating efficiently,0.00
+

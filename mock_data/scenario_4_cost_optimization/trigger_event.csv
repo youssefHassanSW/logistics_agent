@@ -1,0 +1,3 @@
+event_id,event_type,timestamp,severity,description,total_potential_savings
+E004,COST_OVERRUN,2025-10-27 08:00:00,MEDIUM,Monthly cost analysis shows significant overruns in fuel and supplier shipping with optimization opportunities across operations,36037.00
+

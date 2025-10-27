@@ -1,0 +1,8 @@
+scenario_id,scenario_name,primary_agents,secondary_agents,complexity,severity,trigger_type,key_metrics,recommended_for_testing
+1,Low Inventory Crisis,Inventory Manager|Procurement Manager,Cost Optimizer,MEDIUM,HIGH,LOW_INVENTORY,5 products below reorder|Revenue impact: Medium,Basic inventory and procurement workflows
+2,Route Disruption,Route Planner|Distribution Handler,Cost Optimizer,MEDIUM,CRITICAL,ROUTE_DISRUPTION,3 routes affected|45-120 min delays,Route optimization and real-time adjustments
+3,Demand Spike Forecast,Inventory Forecaster|Inventory Manager|Procurement Manager,Route Planner,HIGH,HIGH,DEMAND_SPIKE,6 products with spikes|130-300% increases,Predictive analytics and proactive planning
+4,Cost Optimization Analysis,Cost Optimizer|Route Planner|Procurement Manager,Distribution Handler|Inventory Manager,VERY_HIGH,MEDIUM,COST_OVERRUN,$36K potential savings|Multiple optimization areas,Complex multi-agent coordination and ROI analysis
+5,Supplier Crisis,Procurement Manager|Inventory Manager,Route Planner|Cost Optimizer,HIGH,CRITICAL,SUPPLIER_DISRUPTION,5 suppliers affected|$191K revenue at risk,Crisis management and contingency planning
+6,Distribution Delays & SLA,Distribution Handler|Route Planner,Cost Optimizer|Inventory Manager,HIGH,CRITICAL,DISTRIBUTION_DELAY,2 SLA breaches|$10K penalties,Real-time response and customer relationship management
+

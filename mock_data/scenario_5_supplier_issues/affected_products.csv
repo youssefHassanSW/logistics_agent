@@ -1,0 +1,10 @@
+product_id,product_name,current_stock,daily_demand,days_until_stockout,affected_orders,revenue_at_risk,mitigation_required
+P001,Industrial Bearings,85,12,7,15,19125.00,TRUE
+P002,Hydraulic Pumps,30,5,6,8,41600.00,TRUE
+P004,Circuit Boards,62,8,8,12,25200.00,TRUE
+P007,Rubber Gaskets,48,10,5,18,28800.00,TRUE
+P009,Electrical Connectors,95,14,7,22,77000.00,TRUE
+P005,Copper Wire,155,15,10,5,11000.00,FALSE
+P006,Precision Screws,445,45,10,8,14800.00,FALSE
+P008,Aluminum Frames,85,8,11,4,6600.00,FALSE
+

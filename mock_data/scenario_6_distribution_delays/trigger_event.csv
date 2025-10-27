@@ -1,0 +1,3 @@
+event_id,event_type,timestamp,severity,affected_deliveries,affected_customers,description,sla_breaches,potential_penalties
+E006,DISTRIBUTION_DELAY,2025-10-27 08:00:00,CRITICAL,"D3001,D3002,D3003,D3007,D3008","C201,C202,C203,C207,C208",Multiple traffic incidents causing significant delays with 2 SLA breaches for premium customers,2,10000.00
+

@@ -1,0 +1,12 @@
+supplier_id,supplier_name,product_id,lead_time_days,unit_price,minimum_order_quantity,reliability_score,location,contact_email
+S001,TechParts Inc,P001,7,45.50,50,0.95,Chicago IL,orders@techparts.com
+S002,Industrial Supply Co,P001,10,42.00,100,0.88,Detroit MI,sales@indsupply.com
+S003,HydroTech Systems,P002,5,320.00,10,0.92,Houston TX,procurement@hydrotech.com
+S004,MetalWorks Ltd,P003,14,85.00,20,0.90,Pittsburgh PA,orders@metalworks.com
+S005,ElectroComponents,P004,8,125.00,25,0.93,San Jose CA,sales@electrocomp.com
+S006,WireTech Solutions,P005,6,12.50,200,0.91,Phoenix AZ,orders@wiretech.com
+S007,FastenRight Corp,P006,4,0.85,500,0.96,Atlanta GA,sales@fastenright.com
+S008,RubberTech Industries,P007,12,8.75,100,0.87,Cleveland OH,orders@rubbertech.com
+S009,ConnectPro,P009,7,18.50,50,0.94,Austin TX,sales@connectpro.com
+S010,AlumCore Manufacturing,P008,15,95.00,15,0.89,Seattle WA,orders@alumcore.com
+

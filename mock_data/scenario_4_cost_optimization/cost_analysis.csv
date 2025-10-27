@@ -1,0 +1,14 @@
+cost_id,category,subcategory,monthly_cost,budget,variance_percent,optimization_potential,priority
+C001,Transportation,Fuel,45200,40000,13.0,HIGH,CRITICAL
+C002,Transportation,Vehicle Maintenance,18500,20000,-7.5,MEDIUM,LOW
+C003,Transportation,Driver Wages,65000,65000,0.0,LOW,LOW
+C004,Warehousing,Storage Fees,28000,25000,12.0,MEDIUM,HIGH
+C005,Warehousing,Utilities,8500,9000,-5.6,LOW,LOW
+C006,Warehousing,Labor,42000,40000,5.0,MEDIUM,MEDIUM
+C007,Procurement,Product Costs,185000,180000,2.8,HIGH,MEDIUM
+C008,Procurement,Shipping from Suppliers,22000,18000,22.2,HIGH,CRITICAL
+C009,Inventory,Holding Costs,15500,14000,10.7,MEDIUM,HIGH
+C010,Inventory,Insurance,6800,7000,-2.9,LOW,LOW
+C011,Operations,Technology Systems,12000,12000,0.0,LOW,LOW
+C012,Operations,Administrative,18500,20000,-7.5,LOW,LOW
+

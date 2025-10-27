@@ -1,0 +1,6 @@
+traffic_id,road_segment,severity,incident_type,reported_time,estimated_clearance,affected_routes,delay_minutes
+T001,Highway_I55_Mile_75-85,HIGH,ACCIDENT,2025-10-27 07:15:00,2025-10-27 10:00:00,"R001,R006",45
+T002,Highway_I57_Mile_115-125,CRITICAL,ROAD_CLOSURE,2025-10-27 06:30:00,2025-10-27 14:00:00,R003,120
+T003,Highway_I94_Mile_40-50,MEDIUM,CONSTRUCTION,2025-10-27 06:00:00,2025-10-27 18:00:00,R005,15
+T004,Downtown_Route_North,HIGH,HEAVY_TRAFFIC,2025-10-27 08:00:00,2025-10-27 09:30:00,"R001,R006",30
+

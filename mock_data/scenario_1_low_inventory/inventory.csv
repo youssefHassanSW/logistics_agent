@@ -1,0 +1,12 @@
+product_id,product_name,category,current_stock,reorder_point,max_capacity,warehouse_location,last_updated
+P001,Industrial Bearings,Manufacturing,15,100,500,Warehouse_A,2025-10-27 08:00:00
+P002,Hydraulic Pumps,Manufacturing,8,50,300,Warehouse_A,2025-10-27 08:00:00
+P003,Steel Sheets,Raw Materials,45,200,1000,Warehouse_B,2025-10-27 08:00:00
+P004,Circuit Boards,Electronics,12,80,400,Warehouse_C,2025-10-27 08:00:00
+P005,Copper Wire,Raw Materials,150,100,600,Warehouse_B,2025-10-27 08:00:00
+P006,Precision Screws,Hardware,25,150,800,Warehouse_A,2025-10-27 08:00:00
+P007,Rubber Gaskets,Components,5,60,350,Warehouse_C,2025-10-27 08:00:00
+P008,Aluminum Frames,Manufacturing,180,100,500,Warehouse_B,2025-10-27 08:00:00
+P009,Electrical Connectors,Electronics,10,75,400,Warehouse_C,2025-10-27 08:00:00
+P010,Plastic Casings,Components,220,150,700,Warehouse_A,2025-10-27 08:00:00
+

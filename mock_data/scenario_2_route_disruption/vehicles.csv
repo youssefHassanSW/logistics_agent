@@ -1,0 +1,10 @@
+vehicle_id,vehicle_type,capacity_kg,fuel_level_percent,maintenance_status,current_location,last_inspection,mileage_km
+V001,Box Truck,3500,45,OPERATIONAL,Highway_I55_Mile_78,2025-10-15,45230
+V002,Semi Trailer,18000,78,OPERATIONAL,Customer_Zone_East,2025-10-20,89450
+V003,Box Truck,3500,62,OPERATIONAL,Highway_I57_Mile_120,2025-10-18,52100
+V004,Cargo Van,1500,88,OPERATIONAL,Warehouse_C,2025-10-22,32890
+V005,Semi Trailer,18000,55,OPERATIONAL,Highway_I94_Mile_45,2025-10-19,76540
+V006,Box Truck,3500,70,OPERATIONAL,Warehouse_A,2025-10-21,41200
+V007,Cargo Van,1500,95,AVAILABLE,Warehouse_B,2025-10-23,28900
+V008,Semi Trailer,18000,80,AVAILABLE,Warehouse_A,2025-10-24,65430
+

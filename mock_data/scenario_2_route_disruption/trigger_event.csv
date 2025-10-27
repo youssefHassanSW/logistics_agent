@@ -1,0 +1,3 @@
+event_id,event_type,timestamp,severity,affected_routes,description
+E002,ROUTE_DISRUPTION,2025-10-27 07:15:00,CRITICAL,"R001,R003,R006",Major traffic incidents affecting multiple delivery routes with high-priority shipments
+

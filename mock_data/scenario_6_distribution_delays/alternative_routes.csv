@@ -1,0 +1,8 @@
+alt_route_id,original_route_id,origin,destination,distance_km,estimated_duration_min,traffic_status,fuel_cost_diff,time_savings_min,feasibility_score,recommendation
+AR001,R201,Warehouse_A,Customer_Zone_North,198,215,CLEAR,15.50,-10,0.75,RECOMMENDED
+AR002,R201,Warehouse_A,Customer_Zone_North,178,195,MODERATE,8.20,30,0.88,HIGHLY_RECOMMENDED
+AR003,R202,Warehouse_B,Customer_Zone_East,145,155,CLEAR,12.80,15,0.82,RECOMMENDED
+AR004,R203,Warehouse_A,Customer_Zone_South,208,245,MODERATE,6.50,5,0.65,CONSIDER
+AR005,R207,Warehouse_C,Customer_Zone_North,185,205,CLEAR,13.20,25,0.85,HIGHLY_RECOMMENDED
+AR006,R208,Warehouse_B,Customer_Zone_East,132,145,CLEAR,4.50,20,0.90,HIGHLY_RECOMMENDED
+

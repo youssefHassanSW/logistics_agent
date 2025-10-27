@@ -1,0 +1,10 @@
+route_id,vehicle_id,driver_id,origin,destination,distance_km,planned_duration_min,current_duration_min,status,current_location,progress_percent,fuel_level_percent,eta_original,eta_updated
+R201,V201,D201,Warehouse_A,Customer_Zone_North,165,200,265,DELAYED,Highway_I90_Mile_120,73,52,2025-10-27 09:00:00,2025-10-27 10:05:00
+R202,V202,D202,Warehouse_B,Customer_Zone_East,118,140,185,DELAYED,Highway_I94_Mile_75,64,68,2025-10-27 09:30:00,2025-10-27 10:15:00
+R203,V203,D203,Warehouse_A,Customer_Zone_South,195,230,260,AT_RISK,Downtown_Bridge_Area,58,75,2025-10-27 10:00:00,2025-10-27 10:30:00
+R204,V204,D204,Warehouse_C,Customer_Zone_West,142,170,170,ON_TIME,Highway_I80_Mile_95,56,82,2025-10-27 10:30:00,2025-10-27 10:30:00
+R205,V205,D205,Warehouse_B,Customer_Zone_Central,88,105,105,ON_TIME,Customer_Zone_Central,95,45,2025-10-27 11:00:00,2025-10-27 11:00:00
+R206,V206,D206,Warehouse_A,Customer_Zone_South,175,210,210,ON_TIME,Highway_I57_Mile_85,48,88,2025-10-27 11:30:00,2025-10-27 11:30:00
+R207,V207,D207,Warehouse_C,Customer_Zone_North,158,190,265,DELAYED,Highway_I90_Mile_110,70,58,2025-10-27 09:00:00,2025-10-27 10:15:00
+R208,V208,D208,Warehouse_B,Customer_Zone_East,125,150,200,DELAYED,Highway_I94_Mile_80,64,72,2025-10-27 09:45:00,2025-10-27 10:35:00
+

@@ -1,0 +1,7 @@
+incident_id,road_segment,incident_type,severity,start_time,estimated_clearance,affected_routes,delay_impact_min,alternative_route_available,detour_distance_km
+I001,Highway_I90_Mile_145,MULTI_VEHICLE_ACCIDENT,CRITICAL,2025-10-27 07:30:00,2025-10-27 11:00:00,"R201,R207",75,TRUE,35
+I002,Highway_I94_Mile_88,JACKKNIFED_TRUCK,HIGH,2025-10-27 07:45:00,2025-10-27 10:30:00,"R202,R208",50,TRUE,28
+I003,Downtown_Bridge_Main,CONSTRUCTION,MEDIUM,2025-10-27 06:00:00,2025-10-27 16:00:00,R203,30,TRUE,12
+I004,Interstate_I75_Mile_220,WEATHER_FOG,MEDIUM,2025-10-27 06:30:00,2025-10-27 10:00:00,R203,20,FALSE,0
+I005,Highway_I55_Mile_95,ROAD_DEBRIS,LOW,2025-10-27 08:15:00,2025-10-27 09:00:00,R208,15,TRUE,8
+

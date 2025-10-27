@@ -1,0 +1,12 @@
+forecast_id,product_id,forecast_date,predicted_demand,confidence_level,historical_avg,spike_detected,reason,recommendation
+F001,P001,2025-11-01,450,0.88,120,TRUE,Seasonal increase + new contract,Increase inventory by 300%
+F002,P002,2025-11-01,180,0.92,50,TRUE,Major project launch,Increase inventory by 260%
+F003,P003,2025-11-01,220,0.75,180,FALSE,Normal variance,Maintain current levels
+F004,P004,2025-11-01,320,0.85,80,TRUE,Industry event + promotion,Increase inventory by 300%
+F005,P005,2025-11-01,175,0.70,150,FALSE,Slight increase,Increase by 20%
+F006,P006,2025-11-01,580,0.90,450,TRUE,New product line integration,Increase inventory by 130%
+F007,P007,2025-11-01,95,0.82,100,FALSE,Seasonal decline,Maintain current levels
+F008,P008,2025-11-01,110,0.78,80,FALSE,Normal growth,Increase by 15%
+F009,P009,2025-11-01,420,0.93,140,TRUE,Tech industry boom,Increase inventory by 200%
+F010,P010,2025-11-01,280,0.80,120,TRUE,Market expansion,Increase inventory by 130%
+

@@ -1,0 +1,12 @@
+product_id,current_supplier,current_price,monthly_volume,monthly_cost,alternative_supplier,alternative_price,potential_monthly_savings,quality_score_diff
+P001,TechParts Inc,45.50,450,20475.00,Industrial Supply Co,42.00,1575.00,-0.07
+P002,HydroTech Systems,320.00,180,57600.00,HydroMax Pro,305.00,2700.00,-0.05
+P003,MetalWorks Ltd,85.00,350,29750.00,SteelCore Industries,82.50,875.00,0.02
+P004,ElectroComponents,125.00,280,35000.00,CircuitPro Ltd,118.00,1960.00,-0.03
+P005,WireTech Solutions,12.50,800,10000.00,CopperLine Inc,11.80,560.00,0.01
+P006,FastenRight Corp,0.85,2400,2040.00,BoltMasters,0.78,168.00,-0.02
+P007,RubberTech Industries,8.75,450,3937.50,SealTech Corp,8.20,247.50,0.00
+P008,AlumCore Manufacturing,95.00,280,26600.00,MetalFrame Pro,92.00,840.00,0.03
+P009,ConnectPro,18.50,620,11470.00,ElectroLink Systems,17.25,775.00,-0.01
+P010,PlasticWorks Pro,16.50,480,7920.00,CasingCraft Inc,15.80,336.00,0.02
+

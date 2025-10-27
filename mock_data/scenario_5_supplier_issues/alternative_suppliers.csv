@@ -1,0 +1,9 @@
+alt_supplier_id,supplier_name,product_id,lead_time_days,unit_price,minimum_order_quantity,max_capacity,reliability_score,location,onboarding_time_days,contact_email
+AS001,BearingPro Solutions,P001,5,47.00,100,300,0.91,Indianapolis IN,3,sales@bearingpro.com
+AS002,HydroMax Pro,P002,7,305.00,15,100,0.89,Dallas TX,7,orders@hydromax.com
+AS003,CircuitPro Ltd,P004,6,118.00,50,250,0.90,Austin TX,5,procurement@circuitpro.com
+AS004,SealTech Corp,P007,8,8.20,150,500,0.92,Columbus OH,4,orders@sealtech.com
+AS005,ElectroLink Systems,P009,5,17.25,75,350,0.93,Portland OR,3,sales@electrolink.com
+AS006,Advanced Bearings Inc,P001,6,46.50,75,400,0.94,Milwaukee WI,4,orders@advancedbearings.com
+AS007,FlexSeal Industries,P007,10,8.50,100,400,0.88,Detroit MI,5,sales@flexseal.com
+

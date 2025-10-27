@@ -1,0 +1,3 @@
+event_id,event_type,timestamp,severity,affected_products,warehouse,description
+E001,LOW_INVENTORY,2025-10-27 08:00:00,HIGH,"P001,P002,P004,P007,P009",Multiple,Critical inventory levels detected for 5 products below reorder points
+

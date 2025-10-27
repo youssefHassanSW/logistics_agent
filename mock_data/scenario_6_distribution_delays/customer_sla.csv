@@ -1,0 +1,10 @@
+customer_id,customer_name,sla_type,on_time_target_percent,current_month_performance,ytd_performance,penalty_per_breach,max_delay_allowed_min,critical_customer,contract_value_annual
+C201,MegaManufacturing Co,PREMIUM,98,96.5,97.2,5000.00,15,TRUE,2500000
+C202,TechAssembly Inc,STANDARD,95,94.8,95.5,2500.00,30,FALSE,850000
+C203,AutoParts Distribution,PREMIUM,98,97.8,98.1,5000.00,20,TRUE,1800000
+C204,Electronics Hub,STANDARD,95,96.2,96.8,2500.00,30,FALSE,650000
+C205,Industrial Supplies Ltd,BASIC,90,92.5,93.1,1000.00,60,FALSE,320000
+C206,BuildRight Construction,BASIC,90,91.8,92.4,1000.00,60,FALSE,280000
+C207,SmartHome Systems,PREMIUM,98,95.2,96.8,5000.00,15,TRUE,1950000
+C208,PackagePro Logistics,STANDARD,95,93.5,94.9,2500.00,30,FALSE,720000
+

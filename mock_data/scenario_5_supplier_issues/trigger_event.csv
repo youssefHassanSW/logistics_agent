@@ -1,0 +1,3 @@
+event_id,event_type,timestamp,severity,affected_suppliers,affected_products,description,total_revenue_at_risk
+E005,SUPPLIER_DISRUPTION,2025-10-27 08:00:00,CRITICAL,"S001,S003,S005,S008,S009","P001,P002,P004,P007,P009",Multiple critical supplier issues including bankruptcy and quality problems affecting high-priority products,191725.00
+

@@ -1,0 +1,8 @@
+route_id,origin,destination,distance_km,estimated_duration_min,status,vehicle_id,driver_id,departure_time,expected_arrival
+R001,Warehouse_A,Customer_Zone_North,145,180,DELAYED,V001,D001,2025-10-27 06:00:00,2025-10-27 09:00:00
+R002,Warehouse_B,Customer_Zone_East,98,120,ACTIVE,V002,D002,2025-10-27 07:00:00,2025-10-27 09:00:00
+R003,Warehouse_A,Customer_Zone_South,210,240,BLOCKED,V003,D003,2025-10-27 05:30:00,2025-10-27 09:30:00
+R004,Warehouse_C,Customer_Zone_West,175,200,ACTIVE,V004,D004,2025-10-27 06:30:00,2025-10-27 09:50:00
+R005,Warehouse_B,Customer_Zone_Central,85,110,ACTIVE,V005,D005,2025-10-27 07:30:00,2025-10-27 09:20:00
+R006,Warehouse_A,Customer_Zone_North,145,180,REROUTE_NEEDED,V006,D006,2025-10-27 08:00:00,2025-10-27 11:00:00
+
