@@ -13,10 +13,33 @@ MOCK_DATA_DIR = PROJECT_ROOT / "mock_data"
 
 # API Configuration
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
+GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY", "")
+OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY", "")
 
 # Model Configuration
-MODEL_NAME = "claude-sonnet-4-20250514"
-# MODEL_NAME = "claude-3-5-sonnet-20241022"
+# Supported: "claude", "gemini", or "openai"
+MODEL_PROVIDER = os.environ.get("MODEL_PROVIDER", "claude").lower()
+
+# Claude Models
+CLAUDE_MODEL = "claude-sonnet-4-20250514"
+# CLAUDE_MODEL = "claude-3-5-sonnet-20241022"
+
+# Gemini Models
+GEMINI_MODEL = "gemini-2.5-flash"
+
+# OpenAI Models
+OPENAI_MODEL = "gpt-4o"  # GPT-4o (latest GPT-4 model)
+# OPENAI_MODEL = "gpt-5-mini"  # GPT-5 mini (latest GPT-5 model)
+
+# Get the appropriate model name based on provider
+if MODEL_PROVIDER == "claude":
+    MODEL_NAME = CLAUDE_MODEL
+elif MODEL_PROVIDER == "gemini":
+    MODEL_NAME = GEMINI_MODEL
+elif MODEL_PROVIDER == "openai":
+    MODEL_NAME = OPENAI_MODEL
+else:
+    MODEL_NAME = CLAUDE_MODEL  # Default fallback
 # Scenario mapping
 SCENARIO_DIRS = {
     1: "scenario_1_low_inventory",

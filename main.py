@@ -11,11 +11,11 @@ from dotenv import load_dotenv
 # This ensures API key is available when agents are created
 load_dotenv()
 
-from langchain_anthropic import ChatAnthropic
 from langchain_core.messages import HumanMessage
 from langgraph_supervisor import create_supervisor
 
-from config import MODEL_NAME
+from config import MODEL_PROVIDER
+from config.llm_factory import create_llm, get_model_info
 from agents import (
     route_planner_agent,
     procurement_manager_agent,
@@ -33,7 +33,7 @@ def create_logistics_graph():
     Returns:
         Compiled supervisor graph ready for execution
     """
-    llm = ChatAnthropic(model=MODEL_NAME, temperature=0)
+    llm = create_llm(temperature=0)
     
     # Create supervisor using the prebuilt langgraph-supervisor package
     supervisor = create_supervisor(
@@ -56,17 +56,28 @@ def create_logistics_graph():
             "- Cost optimization opportunities\n"
             "- Supplier issues and procurement\n"
             "- Distribution delays and SLA management\n\n"
+            "AVAILABLE AGENTS:\n"
+            "- Route Planner Agent\n"
+            "- Procurement Manager Agent\n"
+            "- Inventory Manager Agent\n"
+            "- Distribution Handler Agent\n"
+            "- Demand Forecaster Agent\n"
+            "- Cost Optimizer Agent\n\n"
             "WORKFLOW:\n"
             "1. Analyze the trigger event and scenario data provided\n"
-            "2. Determine which specialized agents need to be consulted\n"
+            "2. Determine which specialized agents need to be called\n"
             "3. Delegate tasks to agents ONE AT A TIME with clear instructions\n"
-            "4. Review agent responses and coordinate follow-up tasks if needed\n"
-            "5. Synthesize a final natural language summary including:\n"
+            "4. Review agent responses and delegate follow-up tasks if needed\n"
+            "5. If the issue is not resolved, delegate the task to the next agent\n"
+            "6. Synthesize a final natural language summary including:\n"
             "   - The issue that occurred\n"
             "   - Actions taken by each agent\n"
             "   - Overall recommendations and next steps: THIS SECTION MUST INCLUDE A FULLY DETAILED PLAN OF ACTION FOR THE NEXT STEPS\n\n"
             "INSTRUCTIONS:\n"
             "- When delegating, provide the agent with the scenario directory name and specific task\n"
+            "- ALL AGENTS REQUIRED TO SOLVE THE ISSUE MUST BE CALLED BEFORE YOU CAN RETURN A SUMMARY\n"
+            "- DO NOT RETURN ANY AGENT CALLS AS STEPS IN YOUR SUMMARY\n"
+            "- When solving an issue, make sure to call all the necessary agents to solve the issue\n"
             "- Do NOT call multiple agents in parallel - delegate sequentially\n"
             "- Wait for each agent's response before deciding on next steps\n"
             "- The scenario directory follows the pattern: 'scenario_X_description'\n"
@@ -79,7 +90,7 @@ def create_logistics_graph():
             "delegate to the appropriate specialized agents using the transfer tools."
         ),
         add_handoff_back_messages=True,
-        supervisor_name="Main Orchestrator",
+        supervisor_name="Main_Orchestrator",  # No spaces for OpenAI compatibility
         output_mode="full_history",
     ).compile()
     
@@ -104,8 +115,13 @@ def run_scenario(scenario_id: int, verbose: bool = True):
         return None
     
     if verbose:
+        # Show model information
+        model_info = get_model_info()
+        
         print("\n" + "="*70)
         print(f"RUNNING SCENARIO {scenario_id}")
+        print("="*70)
+        print(f"Model: {model_info['provider'].upper()} - {model_info['model']}")
         print("="*70)
         if scenario['summary']:
             print(scenario['summary'])
@@ -144,9 +160,17 @@ def run_scenario(scenario_id: int, verbose: bool = True):
                         if messages:
                             latest_msg = messages[-1]
                             if hasattr(latest_msg, 'content') and latest_msg.content:
+                                # Handle both string and list content (Gemini returns list)
+                                content = latest_msg.content
+                                if isinstance(content, list):
+                                    # Extract text from list format (Gemini)
+                                    content = ' '.join([str(item) if isinstance(item, str) else item.get('text', '') 
+                                                       for item in content if item])
+                                
                                 # Show first 200 chars of the message
-                                content_preview = str(latest_msg.content)[:200]
-                                if len(str(latest_msg.content)) > 200:
+                                content_str = str(content)
+                                content_preview = content_str[:200]
+                                if len(content_str) > 200:
                                     content_preview += "..."
                                 print(f"  Message: {content_preview}")
                                 
@@ -154,7 +178,7 @@ def run_scenario(scenario_id: int, verbose: bool = True):
                                 all_messages.append({
                                     'step': step_num,
                                     'node': node_name,
-                                    'content': latest_msg.content
+                                    'content': content_str
                                 })
             
             final_state = state
@@ -176,9 +200,17 @@ def run_scenario(scenario_id: int, verbose: bool = True):
                     # Find the last AI message from supervisor
                     for msg in reversed(messages):
                         if hasattr(msg, 'content') and msg.content:
+                            # Handle both string and list content (Gemini returns list)
+                            content = msg.content
+                            if isinstance(content, list):
+                                # Extract text from list format (Gemini)
+                                content = ' '.join([str(item) if isinstance(item, str) else item.get('text', '') 
+                                                   for item in content if item])
+                            content_str = str(content).strip()
+                            
                             # Check if this is a substantial response (not just a tool call)
-                            if len(str(msg.content).strip()) > 50:
-                                print(msg.content)
+                            if len(content_str) > 50:
+                                print(content_str)
                                 summary_found = True
                                 break
             
@@ -265,14 +297,37 @@ def main():
     """
     import sys
     
+    # Check for API key based on model provider
+    model_info = get_model_info()
     
-    # Check for API key
-    if not os.environ.get("ANTHROPIC_API_KEY"):
-        print("[ERROR] ANTHROPIC_API_KEY environment variable not set")
-        print("\nPlease set your Anthropic API key:")
-        print("  Windows: set ANTHROPIC_API_KEY=your-key-here")
-        print("  Linux/Mac: export ANTHROPIC_API_KEY=your-key-here")
+    if not model_info['api_key_set']:
+        print(f"[ERROR] API key not set for {model_info['provider'].upper()}")
+        print(f"\nCurrent model provider: {model_info['provider']}")
+        print(f"Current model: {model_info['model']}")
+        print("\nPlease set the appropriate API key:")
+        
+        if MODEL_PROVIDER == "claude":
+            print("  Windows: set ANTHROPIC_API_KEY=your-key-here")
+            print("  Linux/Mac: export ANTHROPIC_API_KEY=your-key-here")
+            print("  Or add to .env file: ANTHROPIC_API_KEY=your-key-here")
+        elif MODEL_PROVIDER == "gemini":
+            print("  Windows: set GOOGLE_API_KEY=your-key-here")
+            print("  Linux/Mac: export GOOGLE_API_KEY=your-key-here")
+            print("  Or add to .env file: GOOGLE_API_KEY=your-key-here")
+        elif MODEL_PROVIDER == "openai":
+            print("  Windows: set OPENAI_API_KEY=your-key-here")
+            print("  Linux/Mac: export OPENAI_API_KEY=your-key-here")
+            print("  Or add to .env file: OPENAI_API_KEY=your-key-here")
+        
+        print("\nTo switch model provider, set MODEL_PROVIDER environment variable:")
+        print("  For Claude: set MODEL_PROVIDER=claude")
+        print("  For Gemini: set MODEL_PROVIDER=gemini")
+        print("  For OpenAI (GPT): set MODEL_PROVIDER=openai")
+        
         sys.exit(1)
+    
+    # Display current model configuration
+    print(f"\n[INFO] Using {model_info['provider'].upper()} model: {model_info['model']}\n")
     
     # Parse command line arguments
     if len(sys.argv) > 1:

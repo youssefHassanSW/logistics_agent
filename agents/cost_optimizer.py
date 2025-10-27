@@ -2,15 +2,10 @@
 Cost Optimizer Agent - Specialized in financial analysis and cost reduction
 """
 
-from langchain_anthropic import ChatAnthropic
 from langchain.agents import create_agent
-from config import MODEL_NAME, AGENT_NAMES
+from config import AGENT_NAMES
+from config.llm_factory import create_llm
 from tools import analyze_financial_costs, calculate_roi, identify_cost_savings
-
-
-def create_llm():
-    """Create a Claude LLM instance"""
-    return ChatAnthropic(model=MODEL_NAME, temperature=0)
 
 
 cost_optimizer_agent = create_agent(
@@ -23,6 +18,10 @@ cost_optimizer_agent = create_agent(
         "- Identify cost savings opportunities across all operations\n"
         "- Calculate ROI for optimization initiatives\n"
         "- Recommend specific cost reduction strategies\n\n"
+        "AVAILABLE TOOLS:\n"
+        "- analyze_financial_costs: Analyze the financial costs of an operation\n"
+        "- calculate_roi: Calculate the ROI of an optimization initiative\n"
+        "- identify_cost_savings: Identify the cost savings of an optimization initiative\n\n"
         "INSTRUCTIONS:\n"
         "- Use your tools to analyze cost data from multiple sources\n"
         "- Quantify potential savings in dollar amounts\n"

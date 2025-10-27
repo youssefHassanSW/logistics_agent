@@ -115,19 +115,77 @@ def check_api_key():
 
 
 def create_output_card(content: str, color: str = "#2E86AB") -> str:
-    """Create a styled card for displaying final output."""
+    """Create a styled card for displaying final output with proper list styling."""
     return f"""
-    <div style="
-        background: linear-gradient(135deg, {color}15 0%, {color}05 100%);
-        border-left: 5px solid {color};
-        border-radius: 10px;
-        padding: 2rem;
-        margin: 1.5rem 0;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    ">
-        <div style="color: #333; line-height: 1.6;">
-            {content}
-        </div>
+    <style>
+        .output-card {{
+            background: linear-gradient(135deg, {color}15 0%, {color}05 100%);
+            border-left: 5px solid {color};
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            color: #333;
+            line-height: 1.6;
+        }}
+        .output-card h1, .output-card h2, .output-card h3, .output-card h4 {{
+            color: #1a1a1a;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }}
+        .output-card h1 {{
+            font-size: 1.8rem;
+            border-bottom: 2px solid {color}40;
+            padding-bottom: 0.5rem;
+        }}
+        .output-card h2 {{
+            font-size: 1.5rem;
+        }}
+        .output-card h3 {{
+            font-size: 1.3rem;
+        }}
+        .output-card ul {{
+            list-style-type: disc;
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+            padding-left: 0.5rem;
+        }}
+        .output-card ul li {{
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }}
+        .output-card ul ul {{
+            list-style-type: circle;
+            margin-top: 0.5rem;
+            margin-left: 1.5rem;
+        }}
+        .output-card ol {{
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+            padding-left: 0.5rem;
+        }}
+        .output-card ol li {{
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }}
+        .output-card p {{
+            margin-bottom: 0.8rem;
+        }}
+        .output-card strong {{
+            color: #1a1a1a;
+            font-weight: 600;
+        }}
+        .output-card code {{
+            background-color: #f5f5f5;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-family: monospace;
+            font-size: 0.9em;
+        }}
+    </style>
+    <div class="output-card">
+        {content}
     </div>
     """
 
@@ -404,9 +462,26 @@ elif page == "Scenario Runner":
                 if "messages" in final_state[last_key]:
                     messages = final_state[last_key]["messages"]
                     for msg in reversed(messages):
-                        if hasattr(msg, 'content') and msg.content and len(str(msg.content).strip()) > 50:
-                            summary = msg.content
-                            break
+                        if hasattr(msg, 'content') and msg.content:
+                            # Parse content based on its type
+                            content_str = ""
+                            
+                            if isinstance(msg.content, str):
+                                content_str = msg.content
+                            elif isinstance(msg.content, list):
+                                # Handle list of content blocks (e.g., [{'type': 'text', 'text': '...'}])
+                                for block in msg.content:
+                                    if isinstance(block, dict) and 'text' in block:
+                                        content_str += block['text']
+                                    elif isinstance(block, str):
+                                        content_str += block
+                            else:
+                                # Fallback to string conversion
+                                content_str = str(msg.content)
+                            
+                            if len(content_str.strip()) > 50:
+                                summary = content_str
+                                break
             
             # Display results directly
             with results_container:
@@ -420,11 +495,28 @@ elif page == "Scenario Runner":
                 # Then show final model output in a styled card
                 st.markdown("### 📋 Final Agent Output")
                 if summary:
-                    # Convert markdown to HTML for proper rendering in the card
+                    # Convert markdown to HTML and display in a styled card
                     import markdown
-                    html_content = markdown.markdown(summary)
-                    card_html = create_output_card(html_content, color="#2E86AB")
-                    st.markdown(card_html, unsafe_allow_html=True)
+                    
+                    # Convert markdown to HTML
+                    html_content = markdown.markdown(
+                        summary,
+                        extensions=['extra', 'nl2br', 'sane_lists']
+                    )
+                    
+                    # Display in styled card
+                    st.markdown(f"""
+                    <div style="
+                        background: linear-gradient(135deg, rgba(46, 134, 171, 0.08) 0%, rgba(46, 134, 171, 0.03) 100%);
+                        border-left: 5px solid #2E86AB;
+                        border-radius: 10px;
+                        padding: 2rem;
+                        margin: 1rem 0;
+                        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                    ">
+                        {html_content}
+                    </div>
+                    """, unsafe_allow_html=True)
                 else:
                     st.warning("No final summary generated")
             

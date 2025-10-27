@@ -2,15 +2,10 @@
 Demand Forecaster Agent - Specialized in demand prediction and trend analysis
 """
 
-from langchain_anthropic import ChatAnthropic
 from langchain.agents import create_agent
-from config import MODEL_NAME, AGENT_NAMES
+from config import AGENT_NAMES
+from config.llm_factory import create_llm
 from tools import predict_demand_spike, get_demand_forecast, analyze_historical_trends
-
-
-def create_llm():
-    """Create a Claude LLM instance"""
-    return ChatAnthropic(model=MODEL_NAME, temperature=0)
 
 
 demand_forecaster_agent = create_agent(
@@ -23,6 +18,10 @@ demand_forecaster_agent = create_agent(
         "- Analyze historical demand trends and patterns\n"
         "- Provide demand forecasts with confidence levels\n"
         "- Identify products requiring proactive inventory buildup\n\n"
+        "AVAILABLE TOOLS:\n"
+        "- predict_demand_spike: Predict a demand spike for a product\n"
+        "- get_demand_forecast: Get the demand forecast for a product\n"
+        "- analyze_historical_trends: Analyze the historical trends of a product\n\n"
         "INSTRUCTIONS:\n"
         "- Use your tools to analyze demand forecast and historical data\n"
         "- Highlight significant demand changes (>20% increase)\n"

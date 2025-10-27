@@ -2,15 +2,10 @@
 Inventory Manager Agent - Specialized in stock level management
 """
 
-from langchain_anthropic import ChatAnthropic
 from langchain.agents import create_agent
-from config import MODEL_NAME, AGENT_NAMES
+from config import AGENT_NAMES
+from config.llm_factory import create_llm
 from tools import check_stock_levels, predict_inventory_shortage, update_reorder_points
-
-
-def create_llm():
-    """Create a Claude LLM instance"""
-    return ChatAnthropic(model=MODEL_NAME, temperature=0)
 
 
 inventory_manager_agent = create_agent(
@@ -23,6 +18,10 @@ inventory_manager_agent = create_agent(
         "- Predict inventory shortages and stockout timelines\n"
         "- Recommend reorder point adjustments based on demand patterns\n"
         "- Prioritize critical inventory items\n\n"
+        "AVAILABLE TOOLS:\n"
+        "- check_stock_levels: Check the stock levels of a product\n"
+        "- predict_inventory_shortage: Predict the inventory shortage of a product\n"
+        "- update_reorder_points: Update the reorder points of a product\n\n"
         "INSTRUCTIONS:\n"
         "- Use your tools to analyze inventory data from the provided scenario\n"
         "- Identify products that need immediate attention\n"
