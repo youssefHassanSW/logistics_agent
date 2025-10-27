@@ -135,8 +135,8 @@ python main.py viz
 ## 📚 Documentation
 
 ### Streamlit UI Documentation
-- **[STREAMLIT_QUICKSTART.md](STREAMLIT_QUICKSTART.md)** - Get the UI running in 3 steps
-- **[STREAMLIT_README.md](STREAMLIT_README.md)** - Complete UI features and usage guide
+- **[STREAMLIT_QUICKSTART.md](markdowns/STREAMLIT_QUICKSTART.md)** - Get the UI running in 3 steps
+- **[STREAMLIT_README.md](markdowns/STREAMLIT_README.md)** - Complete UI features and usage guide
 
 ### General Documentation
 All documentation is in the `markdowns/` folder:
