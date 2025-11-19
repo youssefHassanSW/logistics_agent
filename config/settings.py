@@ -11,14 +11,41 @@ PROJECT_ROOT = Path(__file__).parent.parent
 # Mock data directory
 MOCK_DATA_DIR = PROJECT_ROOT / "mock_data"
 
+
+def get_secret(key: str, default: str = "") -> str:
+    """
+    Get a secret value from Streamlit secrets or environment variables.
+    
+    This function provides a unified interface for accessing secrets that works both
+    in Streamlit apps (using st.secrets) and in standalone scripts (using os.environ).
+    
+    Args:
+        key: The secret key to retrieve
+        default: Default value if the secret is not found
+        
+    Returns:
+        The secret value or the default
+    """
+    # Try to import streamlit and use st.secrets
+    try:
+        import streamlit as st
+        if hasattr(st, 'secrets') and key in st.secrets:
+            return st.secrets[key]
+    except (ImportError, FileNotFoundError, KeyError):
+        pass
+    
+    # Fallback to environment variables
+    return os.environ.get(key, default)
+
+
 # API Configuration
-ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
-GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY", "")
-OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY", "")
+ANTHROPIC_API_KEY = get_secret("ANTHROPIC_API_KEY", "")
+GOOGLE_API_KEY = get_secret("GOOGLE_API_KEY", "")
+OPENAI_API_KEY = get_secret("OPENAI_API_KEY", "")
 
 # Model Configuration
 # Supported: "claude", "gemini", or "openai"
-MODEL_PROVIDER = os.environ.get("MODEL_PROVIDER", "claude").lower()
+MODEL_PROVIDER = get_secret("MODEL_PROVIDER", "claude").lower()
 
 # Claude Models
 CLAUDE_MODEL = "claude-sonnet-4-20250514"

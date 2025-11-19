@@ -9,8 +9,14 @@
 # 1. Install dependencies
 pip install -r requirements.txt
 
-# 2. Create .env file with your API key
-echo "ANTHROPIC_API_KEY=your-key-here" > .env
+# 2. Configure your API keys
+# Copy the example file
+copy .streamlit\secrets.toml.example .streamlit\secrets.toml  # Windows
+# cp .streamlit/secrets.toml.example .streamlit/secrets.toml  # Linux/Mac
+
+# Edit .streamlit/secrets.toml and add your API key:
+# ANTHROPIC_API_KEY = "your-key-here"
+# MODEL_PROVIDER = "claude"
 
 # 3. Launch the UI
 streamlit run streamlit_app.py
@@ -19,18 +25,22 @@ streamlit run streamlit_app.py
 
 ### Option 2: Command Line
 ```bash
-# 1. Activate ML environment
-conda activate ML
+# 1. Set API key (choose one method)
 
-# 2. Set API key
+# Method A: Environment variables
 set ANTHROPIC_API_KEY=your-key-here  # Windows
 export ANTHROPIC_API_KEY=your-key    # Linux/Mac
 
-# 3. Run a scenario
+# Method B: Use .streamlit/secrets.toml (works for both Streamlit and CLI)
+# Just set up secrets.toml as shown above
+
+# 2. Run a scenario
 python main.py          # Interactive mode
 python main.py 1        # Run scenario 1
 python main.py list     # List all scenarios
 ```
+
+> **📖 New to secrets.toml?** See [SECRETS_MIGRATION_GUIDE.md](SECRETS_MIGRATION_GUIDE.md) for complete setup instructions.
 
 ## 📂 Project Structure (Refactored)
 
@@ -174,9 +184,10 @@ All documentation is in the `markdowns/` folder:
 ## 🔧 Technical Stack
 
 - **Framework**: LangGraph (with langgraph-supervisor)
-- **LLM**: Claude 3.5 Sonnet (Anthropic)
+- **LLM**: Claude 3.5 Sonnet / Gemini / OpenAI (configurable)
 - **Language**: Python 3.13
-- **Environment**: Conda (ML environment)
+- **Configuration**: Streamlit secrets.toml (with environment variable fallback)
+- **UI**: Streamlit
 - **Data Format**: CSV files in mock_data/
 
 ## 📈 Project Stats

@@ -1,9 +1,6 @@
 """
 LLM Factory - Creates the appropriate LLM instance based on configuration
 """
-from dotenv import load_dotenv
-load_dotenv()
-
 from langchain_anthropic import ChatAnthropic
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_openai import ChatOpenAI
@@ -33,7 +30,7 @@ def create_llm(temperature: float = 0):
     """
     if MODEL_PROVIDER == "claude":
         if not ANTHROPIC_API_KEY:
-            raise ValueError("ANTHROPIC_API_KEY not set. Please set it in your .env file or environment.")
+            raise ValueError("ANTHROPIC_API_KEY not set. Please set it in .streamlit/secrets.toml or environment.")
         
         return ChatAnthropic(
             model=CLAUDE_MODEL,
@@ -43,7 +40,7 @@ def create_llm(temperature: float = 0):
     
     elif MODEL_PROVIDER == "gemini":
         if not GOOGLE_API_KEY:
-            raise ValueError("GOOGLE_API_KEY not set. Please set it in your .env file or environment.")
+            raise ValueError("GOOGLE_API_KEY not set. Please set it in .streamlit/secrets.toml or environment.")
         
         return ChatGoogleGenerativeAI(
             model=GEMINI_MODEL,
@@ -53,7 +50,7 @@ def create_llm(temperature: float = 0):
     
     elif MODEL_PROVIDER == "openai":
         if not OPENAI_API_KEY:
-            raise ValueError("OPENAI_API_KEY not set. Please set it in your .env file or environment.")
+            raise ValueError("OPENAI_API_KEY not set. Please set it in .streamlit/secrets.toml or environment.")
         
         return ChatOpenAI(
             model=OPENAI_MODEL,

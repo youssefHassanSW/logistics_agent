@@ -5,12 +5,6 @@ This refactored version uses langgraph-supervisor for simplified supervisor/work
 """
 
 import os
-from dotenv import load_dotenv
-
-# CRITICAL: Load environment variables FIRST, before any other imports
-# This ensures API key is available when agents are created
-load_dotenv()
-
 from langchain_core.messages import HumanMessage
 from langgraph_supervisor import create_supervisor
 
@@ -309,15 +303,15 @@ def main():
         if MODEL_PROVIDER == "claude":
             print("  Windows: set ANTHROPIC_API_KEY=your-key-here")
             print("  Linux/Mac: export ANTHROPIC_API_KEY=your-key-here")
-            print("  Or add to .env file: ANTHROPIC_API_KEY=your-key-here")
+            print("  Or add to .streamlit/secrets.toml: ANTHROPIC_API_KEY = \"your-key-here\"")
         elif MODEL_PROVIDER == "gemini":
             print("  Windows: set GOOGLE_API_KEY=your-key-here")
             print("  Linux/Mac: export GOOGLE_API_KEY=your-key-here")
-            print("  Or add to .env file: GOOGLE_API_KEY=your-key-here")
+            print("  Or add to .streamlit/secrets.toml: GOOGLE_API_KEY = \"your-key-here\"")
         elif MODEL_PROVIDER == "openai":
             print("  Windows: set OPENAI_API_KEY=your-key-here")
             print("  Linux/Mac: export OPENAI_API_KEY=your-key-here")
-            print("  Or add to .env file: OPENAI_API_KEY=your-key-here")
+            print("  Or add to .streamlit/secrets.toml: OPENAI_API_KEY = \"your-key-here\"")
         
         print("\nTo switch model provider, set MODEL_PROVIDER environment variable:")
         print("  For Claude: set MODEL_PROVIDER=claude")

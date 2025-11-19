@@ -8,15 +8,11 @@ This application provides a visual interface for:
 
 import os
 import streamlit as st
-from dotenv import load_dotenv
 from pathlib import Path
 import pandas as pd
 from io import StringIO
 import sys
 from contextlib import contextmanager
-
-# Load environment variables
-load_dotenv()
 
 from langchain_anthropic import ChatAnthropic
 from langchain_core.messages import HumanMessage
@@ -111,6 +107,12 @@ def load_scenario_index():
 
 def check_api_key():
     """Check if API key is set"""
+    # Check st.secrets first, then fall back to environment
+    try:
+        if "ANTHROPIC_API_KEY" in st.secrets:
+            return bool(st.secrets["ANTHROPIC_API_KEY"])
+    except (FileNotFoundError, KeyError):
+        pass
     return bool(os.environ.get("ANTHROPIC_API_KEY"))
 
 
@@ -205,7 +207,7 @@ if check_api_key():
     st.sidebar.success("✅ API Key Configured")
 else:
     st.sidebar.error("❌ API Key Missing")
-    st.sidebar.info("Please set ANTHROPIC_API_KEY in your .env file")
+    st.sidebar.info("Please set ANTHROPIC_API_KEY in .streamlit/secrets.toml")
 
 
 # ============================================================================
@@ -311,7 +313,7 @@ elif page == "Scenario Runner":
     
     if not check_api_key():
         st.error("⚠️ Cannot run scenarios: ANTHROPIC_API_KEY not configured")
-        st.info("Please set your Anthropic API key in the .env file to use this feature.")
+        st.info("Please set your Anthropic API key in .streamlit/secrets.toml to use this feature.")
         st.stop()
     
     # ========================================================================
